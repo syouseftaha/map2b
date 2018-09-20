@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [41.88,-87.6338855],
+              zoom: 11
+          });
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 11,
+               minZoom: 11
+            }).addTo(map);
+
+            var bearsIcon = L.icon({
+                iconUrl: 'bears.png',
+                iconSize:     [50, 50],
+                iconAnchor:   [19, 19],
+                popupAnchor:  [0, -10]
+            });
+            var bullsIcon = L.icon({
+                iconUrl: 'bulls.png',
+                iconSize:     [55, 55],
+                iconAnchor:   [19, 19],
+                popupAnchor:  [0, -10]
+            });
+            var cubsIcon = L.icon({
+                iconUrl: 'cubs.png',
+                iconSize:     [50, 50],
+                iconAnchor:   [19, 19],
+                popupAnchor:  [0, -10]
+            });
+
+            var marker1 = L.marker([41.8623,-87.6167], {icon: bearsIcon}).addTo(map);
+            var marker2 = L.marker([41.8807,-87.6742], {icon: bullsIcon}).addTo(map);
+            var marker3 = L.marker([41.9484,-87.6553], {icon: cubsIcon}).addTo(map);
+
+            var pic1 = '<img src="soldier_field.png" alt="Soldier Field" width="250">';
+            var pic2 = '<img src="united_center.jpg" alt="United Center" width="250">';
+            var pic3 = '<img src="wrigley_field.jpg" alt="Wrigley Field" width="250">';
+
+
+            marker1.bindPopup('<p style="color:darkorange; font-weight:bold"> Soldier Field </p>' + pic1);
+            marker2.bindPopup('<p style="color:red; font-weight:bold"> United Center</p>' + pic2);
+            marker3.bindPopup('<p style="color:blue; font-weight:bold"> Wrigley Field</p>' + pic3);
+
+        </script>
+   </body>
+</html>
